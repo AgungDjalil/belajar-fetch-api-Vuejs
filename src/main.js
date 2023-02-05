@@ -6,9 +6,9 @@ import "animate.css/animate.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faShoppingCart,
-  // faDollarSign,
+  faDollarSign,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faShoppingCart);
+library.add(faShoppingCart, faDollarSign);
 
 createApp(App).mount("#app");

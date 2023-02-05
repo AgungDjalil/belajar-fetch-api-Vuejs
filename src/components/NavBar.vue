@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <nav class="navbar navbar-light fixed-top">
     <div class="navbar-text ml-auto d-flex">
       <button class="btn btn-sm btn-outline-success" @click="$emit('toggle')">
@@ -43,11 +43,11 @@
 </template>
 
 <script>
-import Price from "./Price.vue";
+import Price from "./PriceList.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
-  name: "navbar",
+  name: "NavBar",
   props: ["cart", "cartQty", "cartTotal"],
   components: {
     Price,
@@ -59,4 +59,4 @@ export default {
     },
   },
 };
-</script> -->
+</script>

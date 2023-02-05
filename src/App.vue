@@ -1,13 +1,13 @@
 <template>
   <div id="app" class="container">
     <h1>IDShop</h1>
-    <!-- <navbar
+    <nav-bar
       :cart="cart"
       :cartQty="cartQty"
       :cartTotal="cartTotal"
       @toggle="toggleSliderStatus"
       @delete="deleteItem"
-    ></navbar> -->
+    ></nav-bar>
     <price-slider
       :sliderStatus="style.sliderStatus"
       v-model:maximum="maximum"
@@ -23,7 +23,7 @@
 <script>
 import ProductList from "./components/ProductList.vue";
 import PriceSlider from "./components/PriceSlider.vue";
-// import Navbar from "./components/Navbar.vue";
+import NavBar from "./components/NavBar.vue";
 
 export default {
   name: "app",
@@ -40,6 +40,7 @@ export default {
   components: {
     ProductList,
     PriceSlider,
+    NavBar,
   },
   mounted: function () {
     fetch("https://hplussport.com/api/products/order/price")
