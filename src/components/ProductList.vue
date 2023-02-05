@@ -9,7 +9,7 @@
     <div
       class="row d-none mb-3 align-items-center"
       v-for="(item, index) in showItem"
-      :key="item.id"
+      :key="index"
       :data-index="index"
     >
       <div class="col-1 m-auto">
@@ -22,7 +22,7 @@
         <h3 class="text-info">{{ item.name }}</h3>
         <p class="mb-0">{{ item.description }}</p>
         <div class="h5 float-right">
-          <Price :value="Number(item.price)"></Price>
+          <price :value="Number(item.price)" :precision="2"></price>
         </div>
       </div>
     </div>
@@ -54,14 +54,14 @@ export default {
       var delay = el.dataset.index * 100;
       setTimeout(function () {
         el.className =
-          "row d-flex mb-3 align-items-center animated fadeInRight";
+          "row d-flex mb-3 align-items-center animate__animated animate__fadeInRight";
       }, delay);
     },
     leave: function (el) {
       var delay = el.dataset.index * 100;
       setTimeout(function () {
         el.className =
-          "row d-flex mb-3 align-items-center animated fadeOutRight";
+          "row d-flex mb-3 align-items-center animate__animated animate__fadeOutRight";
       }, delay);
     },
   },
