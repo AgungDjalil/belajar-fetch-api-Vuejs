@@ -27,7 +27,7 @@
                 {{ item.qty }}
               </span>
               {{ item.product.name }}
-              <b>{{ (item.qty * item.product.price) | currencyFormat }}</b>
+              <b>{{ currencyFormat(item.qty * item.product.price) }}</b>
               <a
                 href="#"
                 class="badge badge-danger text-white"
