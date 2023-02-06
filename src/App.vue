@@ -1,29 +1,22 @@
 <template>
   <div id="app" class="container">
-    <nav-bar
+    <products
       :cart="cart"
-      :cartQty="cartQty"
       :cartTotal="cartTotal"
-      @toggle="toggleSliderStatus"
-      @delete="deleteItem"
-    ></nav-bar>
-    <h1 class="mt-2">AGShop</h1>
-    <price-slider
-      :sliderStatus="style.sliderStatus"
-      v-model:maximum="maximum"
-    ></price-slider>
-    <product-list
-      :maximum="maximum"
+      :cartQty="cartQty"
+      :maximum.sync="maximum"
       :products="products"
+      :sliderStatus="sliderStatus"
+      @toggle="toggleSliderStatus"
       @add="addItem"
-    ></product-list>
+      @delete="deleteItem"
+    >
+    </products>
   </div>
 </template>
 
 <script>
-import ProductList from "./components/ProductList.vue";
-import PriceSlider from "./components/PriceSlider.vue";
-import NavBar from "./components/NavBar.vue";
+import Products from "./components/Products.vue";
 
 export default {
   name: "app",
@@ -32,15 +25,8 @@ export default {
       maximum: 50,
       products: [],
       cart: [],
-      style: {
-        sliderStatus: false,
-      },
+      sliderStatus: false,
     };
-  },
-  components: {
-    ProductList,
-    PriceSlider,
-    NavBar,
   },
   mounted: function () {
     fetch("https://hplussport.com/api/products/order/price")
@@ -48,6 +34,9 @@ export default {
       .then((data) => {
         this.products = data;
       });
+  },
+  components: {
+    Products,
   },
   computed: {
     cartTotal: function () {

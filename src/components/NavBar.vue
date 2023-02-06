@@ -2,7 +2,10 @@
   <nav class="navbar navbar-light fixed-top">
     <div class="navbar-text ms-auto d-flex">
       <div class="me-2">
-        <button class="btn btn-sm btn-outline-success" @click="$emit('toggle')">
+        <button
+          class="btn btn-sm btn-outline-success"
+          @click="$emit('toggle-slide')"
+        >
           <font-awesome-icon icon="dollar-sign"></font-awesome-icon>
         </button>
       </div>
@@ -38,7 +41,7 @@
               <a
                 href="#"
                 class="badge text-bg-danger text-white"
-                @click.stop="$emit('delete', index)"
+                @click.stop="$emit('delete-item', index)"
                 >-</a
               >
             </div>
