@@ -1,6 +1,5 @@
 <template>
   <div id="app" class="container">
-    <h1>IDShop</h1>
     <nav-bar
       :cart="cart"
       :cartQty="cartQty"
@@ -8,6 +7,7 @@
       @toggle="toggleSliderStatus"
       @delete="deleteItem"
     ></nav-bar>
+    <h1 class="mt-2">AGShop</h1>
     <price-slider
       :sliderStatus="style.sliderStatus"
       v-model:maximum="maximum"
@@ -33,7 +33,7 @@ export default {
       products: [],
       cart: [],
       style: {
-        sliderStatus: true,
+        sliderStatus: false,
       },
     };
   },

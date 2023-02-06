@@ -1,36 +1,43 @@
 <template>
   <nav class="navbar navbar-light fixed-top">
-    <div class="navbar-text ml-auto d-flex">
-      <button class="btn btn-sm btn-outline-success" @click="$emit('toggle')">
-        <font-awesome-icon icon="dollar-sign"></font-awesome-icon>
-      </button>
-      <div class="dropdown ml-2" v-if="cart.length > 0">
+    <div class="navbar-text ms-auto d-flex">
+      <div class="me-2">
+        <button class="btn btn-sm btn-outline-success" @click="$emit('toggle')">
+          <font-awesome-icon icon="dollar-sign"></font-awesome-icon>
+        </button>
+      </div>
+      <div class="dropdown me-3" v-if="cart.length > 0">
         <button
           class="btn btn-success btn-sm dropdown-toggle"
           id="dropdownCart"
-          data-toggle="dropdown"
+          data-bs-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
         >
           <span class="badge badge-pill badge-light">{{ cartQty }}</span>
-          <i class="fas fa-shopping-cart mx-2"></i>
           <font-awesome-icon icon="shopping-cart"></font-awesome-icon>
           <price :value="Number(cartTotal)"></price>
         </button>
         <div
-          class="dropdown-menu dropdown-menu-right"
+          class="dropdown-menu dropdown-menu-end"
           aria-labelledby="dropdownCart"
         >
           <div v-for="(item, index) in cart" :key="index">
-            <div class="dropdown-item-text text-nowrap text-right">
-              <span class="badge badge-pill badge-warning align-text-top mr-1">
+            <div class="text-nowrap ms-2">
+              <span class="badge text-bg-warning">
                 {{ item.qty }}
               </span>
               {{ item.product.name }}
-              <b>{{ currencyFormat(item.qty * item.product.price) }}</b>
+              <price
+                :value="
+                  item.qty * item.product.price +
+                  'Rp' +
+                  Number.parseFloat(total).toFixed(2)
+                "
+              ></price>
               <a
                 href="#"
-                class="badge badge-danger text-white"
+                class="badge text-bg-danger text-white"
                 @click.stop="$emit('delete', index)"
                 >-</a
               >
@@ -52,11 +59,6 @@ export default {
   components: {
     Price,
     FontAwesomeIcon,
-  },
-  filters: {
-    currencyFormat: function (value) {
-      return "Rp" + Number.parseFloat(value).toFixed(2);
-    },
   },
 };
 </script>
