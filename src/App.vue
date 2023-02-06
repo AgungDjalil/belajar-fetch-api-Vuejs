@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container">
-    <products
+    <router-view
       :cart="cart"
       :cartTotal="cartTotal"
       :cartQty="cartQty"
@@ -10,14 +10,11 @@
       @toggle="toggleSliderStatus"
       @add="addItem"
       @delete="deleteItem"
-    >
-    </products>
+    ></router-view>
   </div>
 </template>
 
 <script>
-import Products from "./components/Products.vue";
-
 export default {
   name: "app",
   data: function () {
@@ -34,9 +31,6 @@ export default {
       .then((data) => {
         this.products = data;
       });
-  },
-  components: {
-    Products,
   },
   computed: {
     cartTotal: function () {
