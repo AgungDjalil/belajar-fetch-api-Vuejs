@@ -4,7 +4,7 @@
       :cart="cart"
       :cartTotal="cartTotal"
       :cartQty="cartQty"
-      :maximum.sync="maximum"
+      v-model:maximum="maximum"
       :products="products"
       :sliderStatus="sliderStatus"
       @toggle="toggleSliderStatus"
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     toggleSliderStatus: function () {
-      this.style.sliderStatus = !this.style.sliderStatus;
+      this.sliderStatus = !this.sliderStatus;
     },
     addItem: function (product) {
       let productIndex;
