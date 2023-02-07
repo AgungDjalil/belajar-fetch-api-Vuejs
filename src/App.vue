@@ -1,15 +1,15 @@
 <template>
-  <div id="app" class="container">
+  <div class="container">
     <router-view
-      :cart="cart"
+      v-model:cart="cart"
       :cartTotal="cartTotal"
       :cartQty="cartQty"
       v-model:maximum="maximum"
       :products="products"
       :sliderStatus="sliderStatus"
       @toggle="toggleSliderStatus"
-      @add="addItem"
       @delete="deleteItem"
+      @add="addItem"
     ></router-view>
   </div>
 </template>

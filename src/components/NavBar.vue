@@ -31,13 +31,7 @@
                 {{ item.qty }}
               </span>
               {{ item.product.name }}
-              <price
-                :value="
-                  item.qty * item.product.price +
-                  'Rp' +
-                  Number.parseFloat(total).toFixed(2)
-                "
-              ></price>
+              <price :value="Number(item.qty * item.product.price)"></price>
               <a
                 href="#"
                 class="badge text-bg-danger text-white"
